@@ -1,0 +1,100 @@
+<div class="container">
+    <form #loginForm="ngForm" (ngSubmit)="loginForm.form.valid && onSubmit(loginForm.value)">
+
+        <label for="username">Username:</label>
+        <input type="text" id="username" class="form-control" [(ngModel)]="userData.username" name="username"
+            #username="ngModel" required minlength="4" maxlength="20" pattern="[a-zA-Z ]*">
+        <!-- error messages -->
+        <div class="errormsg" *ngIf="(username.touched||loginForm.submitted) && username.errors?.['required']">
+            name is required
+        </div>
+        <div class="errormsg" *ngIf="(username.touched||loginForm.submitted) && username.errors?.['minlength']">
+            minlength is 4
+        </div>
+        <div class="errormsg" *ngIf="(username.touched||loginForm.submitted) && username.errors?.['maxlength']">
+            maxlength is 20
+        </div>
+        <div class="errormsg" *ngIf="(username.touched||loginForm.submitted) && username.errors?.['pattern']">
+            numbers are not allowed
+        </div>
+        <!-- error messages ends -->
+
+
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" class="form-control" [(ngModel)]="userData.email" name="email" #email="ngModel"
+            required email>
+        <!-- error messages -->
+        <div class="errormsg" *ngIf="(email.touched||loginForm.submitted) && email.errors?.['required']">
+            email is required
+        </div>
+        <div class="errormsg" *ngIf="(email.touched||loginForm.submitted) && email.errors?.['email']">
+            enter a valid email address
+        </div>
+        <!-- error messages -->
+
+
+        <label for="address">Address:</label>
+        <input type="text" id="address" class="form-control" [(ngModel)]="userData.address" name="address"
+            #address="ngModel" required>
+        <!-- error messages -->
+        <div class="errormsg" *ngIf="(address.touched||loginForm.submitted) && address.errors?.['required']">
+            address is required
+        </div>
+         <!-- error messages -->
+
+        <label for="dob">Date of Birth:</label>
+        <input type="date" id="dob" class="form-control" [(ngModel)]="userData.dob" name="dob" #dob="ngModel" required>
+        <!-- error messages -->
+        <div class="errormsg" *ngIf="(dob.touched||loginForm.submitted) && dob.errors?.['required']">
+            dob is required
+        </div>
+         <!-- error messages -->
+
+
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" class="form-control" [(ngModel)]="userData.password" name="password"
+            #password="ngModel" required minlength="6" maxlength="20"
+            pattern="^(?=.*[a-zA-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]*$">
+
+        <!-- error messages -->
+        <div class="errormsg" *ngIf="(password.touched||loginForm.submitted) && password.errors?.['required']">
+            password is required
+        </div>
+        <div class="errormsg" *ngIf="(password.touched||loginForm.submitted) && password.errors?.['minlength']">
+            password min length is 6
+        </div>
+        <div class="errormsg" *ngIf="(password.touched||loginForm.submitted) && password.errors?.['maxlength']">
+            password maxlength is 12
+        </div>
+        <div class="errormsg" *ngIf="(password.touched||loginForm.submitted) && password.errors?.['pattern']">
+            enter a valid password
+        </div>
+        <!-- error messages -->
+
+
+
+
+        <label for="phone">Phone Number:</label>
+        <input type="tel" id="phone" class="form-control" [(ngModel)]="userData.phone" name="phone" #phone="ngModel"
+            required minlength="10" maxlength="12" pattern="[0-9]+">
+
+        <!-- error messages -->
+        <div class="errormsg" *ngIf="(phone.touched||loginForm.submitted) && phone.errors?.['required']">
+            phone number is required
+        </div>
+        <div class="errormsg" *ngIf="(phone.touched||loginForm.submitted) && phone.errors?.['minlength']">
+            phone min length is 10
+        </div>
+        <div class="errormsg" *ngIf="(phone.touched||loginForm.submitted) && phone.errors?.['maxlength']">
+            phone maxlength is 12
+        </div>
+        <div class="errormsg" *ngIf="(phone.touched||loginForm.submitted) && phone.errors?.['pattern']">
+            enter a valid phone number(0-9)
+        </div>
+        <!-- error messages -->
+
+        <button type="submit">Save</button>
+    </form>
+</div>
